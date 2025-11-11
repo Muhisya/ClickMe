@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div id="counter" class="bg-white px-10 py-8 rounded-lg border-2 border-gray-300 text-center">
+        <h1 class="text-5xl font-bold p-4 animate-bounce">0</h1>
+        <div id="plusminus">
+            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-6 rounded scale-1.1" id="decrement">-</button>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded scale-1.1" id="increment">+</button>
+        </div>
+    </div>
+    <script>
+        const numberElement = document.querySelector('h1');
+        const incrementButton = document.getElementById('increment');
+        const decrementButton = document.getElementById('decrement');
+
+        let count = 0;
+
+        incrementButton.addEventListener('click', () => {
+            count++;
+            numberElement.textContent = count;
+            if (count > 100) {
+                alert("Yay! You have reached 100+!");
+            }
+        });
+
+        decrementButton.addEventListener('click', () => {
+            count--;
+            numberElement.textContent = count;
+            if (count < 0) {
+                decrementButton.disabled = true;
+                alert("Count is negative!.");
+                location.reload();
+            }
+        }); 
+    </script>
+</body>
+</html>
